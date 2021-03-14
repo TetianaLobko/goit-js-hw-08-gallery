@@ -38,23 +38,23 @@ galleryContainerRef.addEventListener('click', onOpenModal);
 function onPressArrow(event) {
   if (event.key === 'ArrowLeft' && activeIndex > 0) {
     activeIndex -= 1;
-    modalImgRef.src = arrOfOriginalImages[activeIndex];
+    return modalImgRef.src = arrOfOriginalImages[activeIndex];
   }
 
-  // if (event.key === 'ArrowLeft' && activeIndex === 0) {
-  //   activeIndex === arrOfOriginalImages.length - 1;
-  //   modalImgRef.src = `${arrOfOriginalImages[activeIndex]}`;
-  // }
+  if (event.key === 'ArrowLeft' && activeIndex === 0) {
+    activeIndex = arrOfOriginalImages.length - 1;
+    return modalImgRef.src = arrOfOriginalImages[activeIndex];
+  }
 
-  if (event.key === 'ArrowRight' && activeIndex < images.length - 1) {
+  if (event.key === 'ArrowRight' && activeIndex < arrOfOriginalImages.length - 1) {
     activeIndex += 1;
-    modalImgRef.src = arrOfOriginalImages[activeIndex];
+    return modalImgRef.src = arrOfOriginalImages[activeIndex];
   }
 
-  // if (event.key === 'ArrowRight' && activeIndex > images.length) {
-  //   activeIndex === 0;
-  //   modalImgRef.src = `${arrOfOriginalImages[activeIndex]}`;
-  // }
+  if (event.key === 'ArrowRight' && activeIndex === arrOfOriginalImages.length - 1) {
+    activeIndex = 0;
+    return modalImgRef.src = arrOfOriginalImages[activeIndex];
+  }
 }
 
 function onOpenModal(event) {
